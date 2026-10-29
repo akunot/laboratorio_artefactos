@@ -22,7 +22,8 @@ jobs:
         env:
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+          NEXUS_HOST: ec2-13-220-188-114.compute-1.amazonaws.com
         run: |
           pip install milib-ejemplo \
-            --index-url http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@ec2-13-220-188-114.compute-1.amazonaws.com:8081/repository/artefactos/ \
-            --trusted-host ec2-35-153-160-39.compute-1.amazonaws.com
+            --index-url "http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_HOST}:8081/repository/artefactos/simple/" \
+            --trusted-host ${NEXUS_HOST}
